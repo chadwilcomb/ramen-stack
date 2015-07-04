@@ -47,11 +47,19 @@ exports.getBeer = function(req, res) {
 // Create endpoint /api/beers/:beer_id for PUT
 exports.putBeer = function(req, res) {
   // Use the Beer model to find a specific beer
-  Beer.update({ userId: req.user._id, _id: req.params.beer_id }, { quantity: req.body.quantity }, function(err, num, raw) {
-    if (err)
-      res.send(err);
+  Beer.findOneAndUpdate(
+    { userId: req.user._id, _id: req.params.beer_id },
+    {
+      brewery: req.body.brewery,
+      name: req.body.name,
+      type: req.body.type,
+      quantity: req.body.quantity,
+    },
+    function(err, beer) {
+      if (err)
+        res.send(err);
 
-    res.json({ message: num + ' updated' });
+    res.json(beer);
   });
 };
 

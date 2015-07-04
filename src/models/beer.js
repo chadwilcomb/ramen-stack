@@ -5,11 +5,12 @@ import authMixin from '../helpers/api-auth-mixin';
 export default Model.extend(authMixin, {
   url () {
     let url = 'http://localhost:8080/api/beers/';
-    if (this.isNew) {
+    if (this.isNew()) {
       return url;
     } else {
-      return url + this.id;
+      return url + this.getId();
     }
+    return url;
   },
   idAttribute: '_id',
   props: {
@@ -25,10 +26,22 @@ export default Model.extend(authMixin, {
     // },
 
     derived: {
-        app_url: {
+        details_url: {
             deps: ['id'],
             fn () {
                 return 'beers/' + this.getId();
+            }
+        },
+        update_url: {
+            deps: ['id'],
+            fn () {
+                return 'beers/edit/' + this.getId();
+            }
+        },
+        delete_url: {
+            deps: ['id'],
+            fn () {
+                return 'beers/delete/' + this.getId();
             }
         }
     },

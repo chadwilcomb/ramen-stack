@@ -4,7 +4,7 @@ import ampersandMixin from 'ampersand-react-mixin';
 export default React.createClass({
     mixins: [ampersandMixin],
 
-    displayName: 'BeerCreatePage',
+    displayName: 'BeerEditPage',
 
     onSubmitForm (event) {
         event.preventDefault();
@@ -24,6 +24,8 @@ export default React.createClass({
     },
 
     render () {
+        const {beer} = this.props
+
         return (
           <div className='container'>
             <h1>Add a beer to your locker</h1>
@@ -33,29 +35,30 @@ export default React.createClass({
 
                 <div className='form-element'>
                   <label htmlFor='brewery'>Brewery</label>
-                  <input onChange={this.onPropChange} id='brewery' name='brewery' type='text' placeholder='Brewery' className='form-input' required/>
+                  <input onChange={this.onPropChange} defaultValue={beer.brewery} id='brewery' name='brewery' type='text' placeholder='Brewery' className='form-input' required/>
                 </div>
 
                 <div className='form-element'>
                   <label htmlFor='name'>Name</label>
-                  <input onChange={this.onPropChange} id='name' name='name' type='text' placeholder='Name' className='form-input' required/>
+                  <input onChange={this.onPropChange} defaultValue={beer.name} id='name' name='name' type='text' placeholder='Name' className='form-input' required/>
                 </div>
 
                 <div className='form-element'>
                   <label htmlFor='type'>Type</label>
-                  <input onChange={this.onPropChange} id='type' name='type' type='text' placeholder='Type' className='form-input' required/>
+                  <input onChange={this.onPropChange} defaultValue={beer.type} id='type' name='type' type='text' placeholder='Type' className='form-input' required/>
                 </div>
 
                 <div className='form-element'>
                   <label htmlFor='type'>Quantity</label>
-                  <input onChange={this.onPropChange} id='quantity' name='quantity' type='number' placeholder='Quantity' className='form-input' required/>
+                  <input onChange={this.onPropChange} defaultValue={beer.quantity} id='quantity' name='quantity' type='number' placeholder='Quantity' className='form-input' required/>
                 </div>
 
-                <button type='submit' className='button button-primary'>Create!</button>
+                <button type='submit' className='button button-primary'>Save Changes</button>
+                <button type='reset' className='button button-neutral'>Reset</button>
 
               </fieldset>
             </form>
           </div>
         )
     }
-})
+});
