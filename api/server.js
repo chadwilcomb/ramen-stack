@@ -5,14 +5,17 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var authController = require('./controllers/auth');
 
-var port = 8080;
-
 // Load controllers
 var beerController = require('./controllers/beer');
 var userController = require('./controllers/user');
 
-// Connect to the beerlocker MongoDB
-mongoose.connect('mongodb://localhost:27017/ramen-stack');
+var port = process.env.PORT || 8080;
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/ramen-stack';
+
+// Connect to the ramen-stack MongoDB
+mongoose.connect(mongoUri);
+
+console.log('Mongoose connected to ' + mongoUri);
 
 // Create our Express application
 var app = express();
