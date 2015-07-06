@@ -64,6 +64,8 @@ router.route('/users/:username')
 // Register all our routes with /api
 app.use('/api', router);
 
+userController.seedAdmin();
+
 // Start the server
 app.listen(port);
 

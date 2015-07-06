@@ -54,3 +54,25 @@ exports.deleteUser = function(req, res) {
     res.json({ message: 'User removed' });
   });
 };
+
+exports.seedAdmin = function (req, res) {
+  //if no admin account exists, seed one
+  User.findOne({ username: 'admin' }, function (err, user) {
+    if (err)
+      res.send(err);
+    if (!user) {
+      var user = new User({
+        username: 'admin',
+        password: 'ramen'
+      });
+
+      user.save(function(err) {
+        if (err)
+          res.send(err);
+
+        res.json(cleanse(user));
+      });
+    }
+
+  })
+}
