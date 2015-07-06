@@ -36,7 +36,7 @@ exports.getBeers = function(req, res) {
 // Create endpoint /api/beers/:beer_id for GET
 exports.getBeer = function(req, res) {
   // Use the Beer model to find a specific beer
-  Beer.find({ userId: req.user._id, _id: req.params.beer_id }, function(err, beer) {
+  Beer.findOne({ userId: req.user._id, _id: req.params.beer_id }, function(err, beer) {
     if (err)
       res.send(err);
 

@@ -11,10 +11,10 @@ export default React.createClass({
 
         return (
             <div className='container'>
-              <h2>{beer.brewery}</h2>
-              <h1>{beer.name}</h1>
-              <h3>{beer.type}</h3>
-              <h1>{beer.quantity}</h1>
+              <p>Brewery: <strong>{beer.brewery}</strong></p>
+              <p>Name: <strong>{beer.name}</strong></p>
+              <p>Type: <strong>{beer.type}</strong></p>
+              <p>Quantity: <strong>{beer.quantity}</strong></p>
               <a href="/beers">Return to Beers</a>
             </div>
         )

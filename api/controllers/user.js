@@ -35,7 +35,7 @@ exports.getUsers = function(req, res) {
 
 // Create endpoint /api/users/:username for GET
 exports.getUser = function(req, res) {
-  // Use the Beer model to find a specific beer
+  // Use the User model to find a specific user
   User.findOne({ username: req.params.username }, function(err, user) {
     if (err)
       res.send(err);

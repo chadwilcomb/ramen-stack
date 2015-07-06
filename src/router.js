@@ -39,11 +39,15 @@ export default Router.extend({
         '*fourohfour': 'fourOhFour'
     },
     public () {
+      if (!app.me.authenticated) {
         this.renderPage(<PublicPage me={app.me}/>, { layout: false });
+      } else {
+        this.redirectTo('/beers');
+      }
     },
 
     listBeers () {
-      if (!app.me.authHeader) {
+      if (!app.me.authenticated) {
         this.redirectTo('');
       } else {
         app.me.beers.fetch();
@@ -52,7 +56,7 @@ export default Router.extend({
     },
 
     createBeer () {
-      if (!app.me.authHeader) {
+      if (!app.me.authenticated) {
         this.redirectTo('');
       } else {
         const beer = new Beer();
@@ -107,6 +111,7 @@ export default Router.extend({
             _this.renderPage(<MessagePage title='Beer not found' />);
           },
           success () {
+            console.log(beer)
             _this.renderPage(<BeerDetailPage beer={beer} />);
           }
         });

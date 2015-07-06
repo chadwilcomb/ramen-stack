@@ -10,7 +10,7 @@ export default React.createClass({
       const {beer} = this.props
       beer.destroy();
       app.router.redirectTo('/beers');
-      
+
     },
 
     render () {
@@ -22,6 +22,8 @@ export default React.createClass({
               <h3>{beer.brewery} {beer.name} {beer.type} {beer.quantity}</h3>
 
               <button type='button' className='button button-warn' onClick={this.onClickDelete}>Delete</button>
+              <br/>
+              <br/>
               <a href="/beers">Return to Beers</a>
             </div>
         )

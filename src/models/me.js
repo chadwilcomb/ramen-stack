@@ -30,7 +30,10 @@ export default Model.extend(authMixin, {
     },
 
     session: {
-      authenticated: 'boolean'
+      authenticated: {
+            type: 'boolean',
+            default: false
+        }
     },
 
     collections: {
