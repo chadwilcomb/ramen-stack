@@ -22,7 +22,7 @@ var favicon = '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32
 // <meta name="theme-color" content="#ffffff">';
 
 module.exports = getConfig({
-    in: 'src/app.js',
+    in: 'spa/app.js',
     out: 'public',
     isDev: process.env.NODE_ENV !== 'production',
     hostname: 'piq-chad.local',

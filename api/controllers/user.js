@@ -40,7 +40,6 @@ exports.getUser = function(req, res) {
     if (err)
       res.send(err);
 
-
     res.json(cleanse(user));
   });
 };
@@ -52,6 +51,6 @@ exports.deleteUser = function(req, res) {
     if (err)
       res.send(err);
 
-    res.json(true);
+    res.json({ message: 'User removed' });
   });
 };

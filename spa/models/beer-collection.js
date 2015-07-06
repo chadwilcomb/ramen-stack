@@ -10,15 +10,4 @@ export default Collection.extend(authMixin, {
 
     mainIndex: '_id',
 
-    getByName (name) {
-
-        let model = this.findWhere({ name: name });
-
-        if (!model) {
-            model = new Beer({ name: name });
-        }
-        model.fetch();
-        return model;
-    }
-
 });

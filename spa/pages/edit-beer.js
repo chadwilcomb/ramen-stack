@@ -1,5 +1,6 @@
 import React from 'react';
 import ampersandMixin from 'ampersand-react-mixin';
+import MessagePage from './message';
 
 export default React.createClass({
     mixins: [ampersandMixin],
@@ -9,11 +10,14 @@ export default React.createClass({
     onSubmitForm (event) {
         event.preventDefault();
         const {beer} = this.props;
-        console.log(this.state);
-        beer.save(this.state);
-        //redirect to things list
-        app.router.redirectTo('/beers');
-
+        beer.save(this.state, {
+          success: function () {
+            app.router.redirectTo('/beers');
+          },
+          error: function () {
+            app.router.renderPage(<MessagePage title='Error saving beer.' />);
+          },
+        });
     },
 
     onPropChange (event) {

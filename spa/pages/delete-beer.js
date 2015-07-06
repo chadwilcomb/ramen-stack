@@ -1,5 +1,6 @@
 import React from 'react';
 import ampersandMixin from 'ampersand-react-mixin';
+import MessagePage from './message';
 
 export default React.createClass({
     mixins: [ampersandMixin],
@@ -8,8 +9,14 @@ export default React.createClass({
 
     onClickDelete () {
       const {beer} = this.props
-      beer.destroy();
-      app.router.redirectTo('/beers');
+      beer.destroy({
+        success: function () {
+          app.router.redirectTo('/beers');
+        },
+        error: function () {
+          app.router.renderPage(<MessagePage title='Error deleting beer.' />);
+        },
+      });
 
     },
 

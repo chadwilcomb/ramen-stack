@@ -31,9 +31,9 @@ export default Model.extend(authMixin, {
 
     session: {
       authenticated: {
-            type: 'boolean',
-            default: false
-        }
+        type: 'boolean',
+        default: false
+      }
     },
 
     collections: {
@@ -41,7 +41,6 @@ export default Model.extend(authMixin, {
     },
 
     syncToLocalStorage () {
-
       window.localStorage.me = JSON.stringify({
         username: this.username,
         authHeader: this.authHeader,
@@ -62,6 +61,5 @@ export default Model.extend(authMixin, {
     fetchInitialData () {
       this.beers.fetch();
     }
-
 
 });
