@@ -59,7 +59,7 @@ router.route('/beers/:beer_id')
 
 // Create endpoint handlers for /users
 router.route('/users')
-  .post(authController.isAuthenticated, userController.postUser)
+  .post(userController.postUser)
   .get(authController.isAuthenticated, userController.getUsers);
 
 router.route('/users/:username')

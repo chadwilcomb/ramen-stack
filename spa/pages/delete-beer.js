@@ -25,9 +25,7 @@ export default React.createClass({
 
         return (
             <div className='container'>
-              <h2>Are you sure you want to delete this beer?</h2>
-              <h3>{beer.brewery} {beer.name} {beer.type} {beer.quantity}</h3>
-
+              <h2>Are you sure you want to delete {beer.quantity} {beer.brewery} {beer.name}s from your locker?</h2>
               <button type='button' className='button button-warn' onClick={this.onClickDelete}>Delete</button>
               <br/>
               <br/>

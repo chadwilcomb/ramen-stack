@@ -7,6 +7,7 @@ import xhr from 'xhr'
 import Layout from './layout';
 import MessagePage from './pages/message';
 import PublicPage from './pages/public';
+import RegisterUserPage from './pages/register';
 import BeersPage from './pages/beers';
 import CreateBeerPage from './pages/create-beer';
 import BeerDetailPage from './pages/detail-beer';
@@ -29,6 +30,7 @@ export default Router.extend({
 
   routes: {
     '': 'public',
+    'register': 'registerUser',
     'beers/create': 'createBeer',
     'beers/edit/:id': 'editBeer',
     'beers/delete/:id': 'deleteBeer',
@@ -41,6 +43,14 @@ export default Router.extend({
   public () {
     if (!app.me.authenticated) {
       this.renderPage(<PublicPage me={app.me}/>, { layout: false });
+    } else {
+      this.redirectTo('/beers');
+    }
+  },
+
+  registerUser () {
+    if (!app.me.authenticated) {
+      this.renderPage(<RegisterUserPage user={app.me}/>, { layout: false });
     } else {
       this.redirectTo('/beers');
     }

@@ -3,8 +3,8 @@ var User = require('../models/user');
 
 function cleanse(user) {
   user = user.toObject();
-  delete user["_id"];
   delete user["password"];
+  user.authenticated = true;
   return user;
 }
 
@@ -14,11 +14,19 @@ exports.postUser = function(req, res) {
     username: req.body.username,
     password: req.body.password
   });
-  user.save(function(err) {
+  User.findOne({ username: user.username }, function (err, user) {
     if (err)
       res.send(err);
+    if (!user) {
+      user.save(function(err) {
+        if (err)
+          res.send(err);
 
-    res.json(cleanse(user));
+        res.json(cleanse(user));
+      });
+    } else {
+      res.send(500, 'Username already taken');
+    }
   });
 };
 
