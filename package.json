@@ -10,7 +10,7 @@
     "build": "NODE_ENV=production webpack",
     "surge": "surge -p public -d ramen-stack.surge.sh",
     "deploy-client": "npm run build && npm run surge",
-    "deploy-api": "git push heroku master"
+    "deploy-api": "git push origin master"
   },
   "repository": {
     "type": "git",

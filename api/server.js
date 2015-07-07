@@ -46,12 +46,6 @@ router.route('/beers/:beer_id')
   .put(authController.isAuthenticated, beerController.putBeer)
   .delete(authController.isAuthenticated, beerController.deleteBeer);
 
-// router.route('/beers/name/:name')
-//   .get(authController.isAuthenticated, beerController.getBeerByName);
-//
-// router.route('/beers/brewery/:brewery')
-//   .get(authController.isAuthenticated, beerController.getBeerByBrewery);
-
 // Create endpoint handlers for /users
 router.route('/users')
   .post(userController.postUser)

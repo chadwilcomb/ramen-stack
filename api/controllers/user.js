@@ -14,14 +14,16 @@ exports.postUser = function(req, res) {
     username: req.body.username,
     password: req.body.password
   });
-  User.findOne({ username: user.username }, function (err, user) {
-    if (err)
+  User.findOne({ username: user.username }, function (err, found) {
+    if (err) {
       res.send(err);
-    if (!user) {
+    }
+    console.log(found);
+    if (found === null) {
       user.save(function(err) {
-        if (err)
+        if (err) {
           res.send(err);
-
+        }
         res.json(cleanse(user));
       });
     } else {
