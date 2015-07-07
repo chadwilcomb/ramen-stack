@@ -1,4 +1,5 @@
 import xhr from 'xhr'
+import app from 'ampersand-app'
 import Model from 'ampersand-model'
 import BeerCollection from './beer-collection'
 import authMixin from '../helpers/api-auth-mixin'

@@ -1,4 +1,5 @@
 import React from 'react';
+import app from 'ampersand-app'
 import ampersandMixin from 'ampersand-react-mixin';
 import MessagePage from './message';
 
@@ -34,6 +35,7 @@ export default React.createClass({
         },
         {
           success: function () {
+            user.set({ isRegister: false });
             app.router.redirectTo('/beers');
           },
           error: function (model, response, options) {

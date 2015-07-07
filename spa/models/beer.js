@@ -1,10 +1,11 @@
 import Model from 'ampersand-model';
+import app from 'ampersand-app'
 import authMixin from '../helpers/api-auth-mixin';
 
 export default Model.extend(authMixin, {
 
   url () {
-    let url = 'http://localhost:8080/api/beers/';
+    let url = app.apiUrl + '/api/beers/';
     if (this.isNew()) {
       return url;
     } else {

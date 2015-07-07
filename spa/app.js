@@ -8,7 +8,7 @@ import config from './config';
 require("file?name=favicon.ico!./images/favicon/favicon.ico");
 
 //expose 'app' to browser console for debugging
-window.app = app;
+// window.app = app;
 
 app.extend({
   init () {
