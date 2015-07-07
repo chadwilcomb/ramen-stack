@@ -9,12 +9,11 @@ function cleanse(user) {
 }
 
 // Create endpoint /api/users for POST
-exports.postUsers = function(req, res) {
+exports.postUser = function(req, res) {
   var user = new User({
     username: req.body.username,
     password: req.body.password
   });
-
   user.save(function(err) {
     if (err)
       res.send(err);

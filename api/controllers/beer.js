@@ -2,8 +2,7 @@
 var Beer = require('../models/beer');
 
 // Create endpoint /api/beers for POSTS
-exports.postBeers = function(req, res) {
-
+exports.postBeer = function(req, res) {
   // Create a new instance of the Beer model
   var beer = new Beer();
 

@@ -21,6 +21,10 @@ console.log('Mongoose connected to ' + mongoUri);
 var app = express();
 
 // Use the body-parser package in our application
+// configure the app to use bodyParser()
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
 
 // Use the passport package in our application
@@ -38,7 +42,7 @@ var router = express.Router();
 
 // Create endpoint handlers for /beers
 router.route('/beers')
-  .post(authController.isAuthenticated, beerController.postBeers)
+  .post(authController.isAuthenticated, beerController.postBeer)
   .get(authController.isAuthenticated, beerController.getBeers);
 
 // Create endpoint handlers for /beers/:beer_id
@@ -55,7 +59,7 @@ router.route('/beers/:beer_id')
 
 // Create endpoint handlers for /users
 router.route('/users')
-  .post(userController.postUsers)
+  .post(authController.isAuthenticated, userController.postUser)
   .get(authController.isAuthenticated, userController.getUsers);
 
 router.route('/users/:username')
