@@ -39,6 +39,7 @@
     "ampersand-router": "^3.0.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.1",
+    "cors": "^2.7.1",
     "express": "^4.13.0",
     "font-awesome": "^4.3.0",
     "hjs-webpack": "^2.2.2",

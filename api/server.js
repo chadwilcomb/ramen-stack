@@ -3,9 +3,10 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var authController = require('./controllers/auth');
+var cors = require('cors');
 
 // Load controllers
+var authController = require('./controllers/auth');
 var beerController = require('./controllers/beer');
 var userController = require('./controllers/user');
 
@@ -20,13 +21,7 @@ console.log('Mongoose connected to ' + mongoUri);
 // Create our Express application
 var app = express();
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
-  next();
-});
-
+app.use(cors());
 // Use the body-parser package in our application
 // configure the app to use bodyParser()
 app.use(bodyParser.urlencoded({
@@ -36,8 +31,6 @@ app.use(bodyParser.json());
 
 // Use the passport package in our application
 app.use(passport.initialize());
-
-
 
 // Create our Express router
 var router = express.Router();

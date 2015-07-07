@@ -25,7 +25,7 @@ exports.postUser = function(req, res) {
         res.json(cleanse(user));
       });
     } else {
-      res.send(500, 'Username already taken');
+      res.status(500).send('Username already taken');
     }
   });
 };
