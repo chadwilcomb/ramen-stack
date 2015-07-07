@@ -8,6 +8,6 @@ export default {
   },
 
   'ramen-stack.surge.sh': {
-    apiUrl: 'http://localhost:8080'
+    apiUrl: 'https://ramen-stack.herokuapp.com'
   }
 }[window.location.hostname];
