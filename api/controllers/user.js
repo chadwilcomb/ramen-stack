@@ -56,7 +56,7 @@ exports.getUser = function(req, res) {
 // Create endpoint /api/users/:username for DELETE
 exports.deleteUser = function(req, res) {
   // Use the User model to find a specific user and remove it
-  User.remove({ _id: req.user._id }, function(err) {
+  User.remove({ username: req.params.username }, function(err) {
     if (err)
       res.send(err);
 

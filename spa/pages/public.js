@@ -48,7 +48,10 @@ export default React.createClass({
 
         return (
           <div className='container'>
-            <h1>Sign in to <a href='https://github.com/chadwilcomb/ramen-stack' target='_blank'>RAMEN</a> API<span className='icon ramen'></span></h1>
+            <h1><span className='icon ramen'></span>&nbsp;Welcome to the <a href='https://github.com/chadwilcomb/ramen-stack' target='_blank'>RAMEN stack</a> Web Client</h1>
+            <p>The RAMEN stack is a sample project/scaffolding of a fully decoupled client-server application
+            based on <strong>R</strong>eact&nbsp;+&nbsp;<strong>A</strong>mpersand&nbsp;+&nbsp;<strong>M</strong>ongoDB&nbsp;+&nbsp;
+            <strong>E</strong>xpress&nbsp;+&nbsp;<strong>N</strong>ode.&nbsp;<a href='https://github.com/chadwilcomb/ramen-stack'><i className='fa fa-github'></i></a></p>
             <form name='signinForm' onSubmit={this.onSubmitForm} >
               <fieldset>
                 <legend>Sign In</legend>

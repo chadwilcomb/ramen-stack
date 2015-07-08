@@ -52,7 +52,8 @@ router.route('/users')
   .get(authController.isAuthenticated, userController.getUsers);
 
 router.route('/users/:username')
-  .get(authController.isAuthenticated, userController.getUser);
+  .get(authController.isAuthenticated, userController.getUser)
+  .delete(authController.isAuthenticated, userController.deleteUser);
 
 // Register all our routes with /api
 app.use('/api', router);
